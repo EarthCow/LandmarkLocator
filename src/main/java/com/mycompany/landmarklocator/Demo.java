@@ -9,6 +9,13 @@ import com.google.cloud.vision.v1.Feature;
 import com.google.cloud.vision.v1.Image;
 import com.google.cloud.vision.v1.ImageAnnotatorClient;
 import com.google.cloud.vision.v1.LocationInfo;
+import com.google.maps.GeoApiContext;
+import com.google.maps.NearbySearchRequest;
+import com.google.maps.PlacesApi;
+import com.google.maps.model.LatLng;
+import com.google.maps.model.PlaceType;
+import com.google.maps.model.PlacesSearchResponse;
+import com.google.maps.model.PlacesSearchResult;
 import com.google.protobuf.ByteString;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -56,6 +63,22 @@ public class Demo {
         for (EntityAnnotation annotation : res.getLandmarkAnnotationsList()) {
           LocationInfo info = annotation.getLocationsList().listIterator().next();
           System.out.format("Landmark: %s%n %s%n", annotation.getDescription(), info.getLatLng());
+          
+            GeoApiContext context = new GeoApiContext.Builder()
+                .apiKey("AIzaSyC26kOz1q-7JdipmEP8b--dcnYGomYr63E")
+                .build();
+            LatLng mapsLatLng = new LatLng(info.getLatLng().getLatitude(), info.getLatLng().getLongitude());
+            NearbySearchRequest nsr = PlacesApi.nearbySearchQuery(context, mapsLatLng);
+            try {
+                PlacesSearchResponse psr = nsr.radius(500).type(PlaceType.CAFE).await();
+                System.out.println("Found a total of " + psr.results.length + " results!");
+                for (PlacesSearchResult result : psr.results) {
+                    System.out.println("Name: " + result.name);
+                    System.out.println("Rating: " + result.rating);
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
       }
     }
