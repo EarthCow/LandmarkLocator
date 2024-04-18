@@ -31,7 +31,7 @@ import java.util.List;
  */
 public class Demo {
   public static void detectLandmarks() throws IOException {
-    String filePath = "leaning-tower-of-pisa-getty.jpg";
+    String filePath = "college_building.jpeg";
     detectLandmarks(filePath);
   }
 
