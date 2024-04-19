@@ -28,31 +28,39 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="calcBtn" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="birthMonthLbl" alignment="0" max="32767" attributes="0"/>
-                          <Component id="birthDayLbl" alignment="0" max="32767" attributes="0"/>
-                          <Component id="lastNameLbl" alignment="0" max="32767" attributes="0"/>
-                          <Component id="firstNameLbl" alignment="0" max="32767" attributes="0"/>
-                          <Component id="birthYearLbl" alignment="0" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="calcBtn" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="birthMonthLbl" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="birthDayLbl" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lastNameLbl" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="firstNameLbl" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="birthYearLbl" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="firstNameTxt" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="lastNameTxt" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="birthMonthTxt" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="birthDayTxt" min="-2" pref="75" max="-2" attributes="0"/>
+                                  <Component id="birthYearTxt" min="-2" pref="75" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="firstNameTxt" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="lastNameTxt" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="birthMonthTxt" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="birthDayTxt" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="birthYearTxt" min="-2" pref="75" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jScrollPane1" min="-2" pref="225" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" min="-2" pref="225" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace pref="144" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -88,11 +96,12 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="calcBtn" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" min="-2" pref="179" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="jLabel2" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -190,5 +199,15 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabel2">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/cathedral.jpg"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel2MouseClicked"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

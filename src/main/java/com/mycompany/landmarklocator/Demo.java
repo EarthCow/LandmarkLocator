@@ -30,8 +30,14 @@ import java.util.List;
  * @version 1.0 Apr 10, 2024
  */
 public class Demo {
+    
+  private String name;
+
+    
+    
+    
   public static void detectLandmarks() throws IOException {
-    String filePath = "college_building.jpeg";
+    String filePath = "cathedral.jpg";
     detectLandmarks(filePath);
   }
 
@@ -64,6 +70,7 @@ public class Demo {
           LocationInfo info = annotation.getLocationsList().listIterator().next();
           System.out.format("Landmark: %s%n %s%n", annotation.getDescription(), info.getLatLng());
           
+          
             GeoApiContext context = new GeoApiContext.Builder()
                 .apiKey("AIzaSyC26kOz1q-7JdipmEP8b--dcnYGomYr63E")
                 .build();
@@ -83,4 +90,12 @@ public class Demo {
       }
     }
   }
+  
+  
+  
+  
+  
+  
+  
+  
 }
