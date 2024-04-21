@@ -1,6 +1,7 @@
 
 package com.mycompany.landmarklocator;
 
+import com.mycompany.landmarklocator.db.LandmarkDB;
 import java.io.IOException;
 
 /**
@@ -12,6 +13,9 @@ import java.io.IOException;
  * @author Ryan W & Griffin G
  */
 public class LandmarkLocator {
+    
+    // LandmarkDB instance that should always be used
+    public static final LandmarkDB landmarkDB = new LandmarkDB();
 
     /**
      * Initializes the program
