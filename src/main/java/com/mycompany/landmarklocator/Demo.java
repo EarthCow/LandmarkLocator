@@ -37,7 +37,7 @@ public class Demo {
     
     
   public static void detectLandmarks() throws IOException {
-    String filePath = "cathedral.jpg";
+    String filePath = "images/cathedral.jpg";
     detectLandmarks(filePath);
   }
 
