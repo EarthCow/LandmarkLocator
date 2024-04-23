@@ -31,13 +31,13 @@ import java.util.List;
  */
 public class Demo {
     
-  private String name;
-
+  private static String description;
+  private static String location;
     
     
     
   public static void detectLandmarks() throws IOException {
-    String filePath = "cathedral.jpg";
+    String filePath = "college_building.jpeg";
     detectLandmarks(filePath);
   }
 
@@ -68,7 +68,13 @@ public class Demo {
         // For full list of available annotations, see http://g.co/cloud/vision/docs
         for (EntityAnnotation annotation : res.getLandmarkAnnotationsList()) {
           LocationInfo info = annotation.getLocationsList().listIterator().next();
-          System.out.format("Landmark: %s%n %s%n", annotation.getDescription(), info.getLatLng());
+          
+          //System.out.format("Landmark: %s%n %s%n", annotation.getDescription(), info.getLatLng());
+          description = annotation.getDescription();
+          location = info.getLatLng().toString();
+          
+          
+          
           
           
             GeoApiContext context = new GeoApiContext.Builder()
@@ -90,7 +96,24 @@ public class Demo {
       }
     }
   }
-  
+
+    public static String getDescription() {
+        return description;
+    }
+
+    public static void setDescription(String description) {
+        Demo.description = description;
+    }
+
+    public static String getLocation() {
+        return location;
+    }
+
+    public static void setLocation(String location) {
+        Demo.location = location;
+    }
+
+ 
   
   
   

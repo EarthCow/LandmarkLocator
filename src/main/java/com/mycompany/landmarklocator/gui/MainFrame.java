@@ -30,58 +30,26 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        firstNameLbl = new javax.swing.JLabel();
-        lastNameLbl = new javax.swing.JLabel();
-        birthMonthLbl = new javax.swing.JLabel();
-        birthDayLbl = new javax.swing.JLabel();
-        birthYearLbl = new javax.swing.JLabel();
-        firstNameTxt = new javax.swing.JTextField();
-        lastNameTxt = new javax.swing.JTextField();
-        birthMonthTxt = new javax.swing.JTextField();
-        birthDayTxt = new javax.swing.JTextField();
-        birthYearTxt = new javax.swing.JTextField();
-        calcBtn = new javax.swing.JButton();
+        jSpinner1 = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         outputTxtArea = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        outputTxtArea1 = new javax.swing.JTextArea();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Heart Rate Calculator");
         setLocation(new java.awt.Point(100, 100));
         setResizable(false);
-
-        firstNameLbl.setText("First Name");
-
-        lastNameLbl.setText("Last Name");
-
-        birthMonthLbl.setText("Birth month");
-
-        birthDayLbl.setText("Birth day");
-
-        birthYearLbl.setText("Birth year");
-
-        firstNameTxt.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        firstNameTxt.setName("firstNameTxt"); // NOI18N
-
-        lastNameTxt.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        lastNameTxt.setName("lastNameTxt"); // NOI18N
-
-        birthMonthTxt.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        birthMonthTxt.setName("birthMonthTxt"); // NOI18N
-
-        birthDayTxt.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        birthDayTxt.setName("birthDayTxt"); // NOI18N
-
-        birthYearTxt.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        birthYearTxt.setName("birthYearTxt"); // NOI18N
-
-        calcBtn.setText("Calculate");
-        calcBtn.setName("calcBtn"); // NOI18N
-        calcBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                calcBtnActionPerformed(evt);
-            }
-        });
 
         outputTxtArea.setEditable(false);
         outputTxtArea.setColumns(20);
@@ -97,120 +65,195 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "restaurant", "cafe", "amusement_park", "aquarium", "bowling_alley", "casino", "cultural_center", "dog_park", "hiking_area", "historical_landmark", "marina", "movie_theater", "national_park", "night_club", "park", "tourist_attraction", "visitor_center", "zoo" }));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/college_building.jpg"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        jLabel3.setText("Search for:");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/french_tower.jpg"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
+        outputTxtArea1.setEditable(false);
+        outputTxtArea1.setColumns(20);
+        outputTxtArea1.setRows(5);
+        outputTxtArea1.setFocusable(false);
+        outputTxtArea1.setName("outputTxtArea"); // NOI18N
+        jScrollPane2.setViewportView(outputTxtArea1);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("Landmark Locator");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/moai.jpg"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+
+        jLabel7.setText("Information:");
+
+        jLabel8.setText("Results of Search:");
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/opera.jpg"))); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(calcBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(birthMonthLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(birthDayLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lastNameLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(firstNameLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(birthYearLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel9))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(16, 16, 16))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(firstNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(birthMonthTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(birthDayTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(birthYearTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel2)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(265, 265, 265)
+                .addComponent(jLabel5)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(firstNameLbl)
-                            .addComponent(firstNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lastNameLbl)
-                            .addComponent(lastNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(birthMonthLbl)
-                            .addComponent(birthMonthTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(birthDayLbl)
-                            .addComponent(birthDayTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(birthYearLbl)
-                            .addComponent(birthYearTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel4)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
-                        .addComponent(calcBtn))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                        .addComponent(jLabel6)
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel9))
+                        .addContainerGap(17, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void calcBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcBtnActionPerformed
-        try {
-            String firstName = firstNameTxt.getText();
-            String lastName = lastNameTxt.getText();
-            int birthMonth = Integer.parseInt(birthMonthTxt.getText());
-            int birthDay = Integer.parseInt(birthDayTxt.getText());
-            int birthYear = Integer.parseInt(birthYearTxt.getText());
-
-            HeartRates heartRates = new HeartRates(firstName, lastName, birthMonth, birthDay, birthYear);
-
-            outputTxtArea.setText(String.format(
-                """
-
-                --- RESULTS ---
-                First name: %s
-                Last name: %s
-                DOB: %s/%s/%s
-
-                Age: %s
-                Max Heart Rate: %s BPM
-                Target Heart Rate: %s BPM
-                """,
-                heartRates.getFirstName(),
-                heartRates.getLastName(),
-                heartRates.getDobMonth(),
-                heartRates.getDobDay(),
-                heartRates.getDobYear(),
-                heartRates.calcAge(),
-                heartRates.calcMaxHeartRate(),
-                heartRates.calcTargetHeartRateRange()
-            ));
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Birth parameters must be numeric!!", e.getClass().toString(), JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_calcBtnActionPerformed
-
+    //red square clicked
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        
-        
+
         try {
             outputTxtArea.setText("Attempting!");
             Demo.detectLandmarks("cathedral.jpg");
+            outputTxtArea.setText(Demo.getDescription() + "\n"+ Demo.getLocation());
         } catch (IOException ex) {
             System.out.println("Failed :(");
             ex.printStackTrace();
         }
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    
+    //old main clicked
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        
+        try {
+            outputTxtArea.setText("Attempting!");
+            Demo.detectLandmarks("college_building.jpg");
+            outputTxtArea.setText(Demo.getDescription() + "\n"+ Demo.getLocation());
+        } catch (IOException ex) {
+            System.out.println("Failed :(");
+            ex.printStackTrace();
+        }
+        
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    //eiffel tower clicked
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        try {
+            outputTxtArea.setText("Attempting!");
+            Demo.detectLandmarks("french_tower.jpg");
+            outputTxtArea.setText(Demo.getDescription() + "\n"+ Demo.getLocation());
+        } catch (IOException ex) {
+            System.out.println("Failed :(");
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    //moai clicked
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        try {
+            outputTxtArea.setText("Attempting!");
+            Demo.detectLandmarks("moai.jpg");
+            outputTxtArea.setText(Demo.getDescription() + "\n"+ Demo.getLocation());
+        } catch (IOException ex) {
+            System.out.println("Failed :(");
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    //sydney opera house clicked
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        try {
+            outputTxtArea.setText("Attempting!");
+            Demo.detectLandmarks("opera.jpg");
+            outputTxtArea.setText(Demo.getDescription() + "\n"+ Demo.getLocation());
+        } catch (IOException ex) {
+            System.out.println("Failed :(");
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -251,19 +294,20 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel birthDayLbl;
-    private javax.swing.JTextField birthDayTxt;
-    private javax.swing.JLabel birthMonthLbl;
-    private javax.swing.JTextField birthMonthTxt;
-    private javax.swing.JLabel birthYearLbl;
-    private javax.swing.JTextField birthYearTxt;
-    private javax.swing.JButton calcBtn;
-    private javax.swing.JLabel firstNameLbl;
-    private javax.swing.JTextField firstNameTxt;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lastNameLbl;
-    private javax.swing.JTextField lastNameTxt;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea outputTxtArea;
+    private javax.swing.JTextArea outputTxtArea1;
     // End of variables declaration//GEN-END:variables
 }
