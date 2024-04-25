@@ -1,6 +1,7 @@
 
 package com.mycompany.landmarklocator;
 
+import com.mycompany.landmarklocator.db.LandmarkDB;
 import java.io.IOException;
 
 /**
@@ -12,6 +13,9 @@ import java.io.IOException;
  * @author Ryan W & Griffin G
  */
 public class LandmarkLocator {
+    
+    // LandmarkDB instance that should always be used
+    public static final LandmarkDB landmarkDB = new LandmarkDB();
 
     /**
      * Initializes the program
@@ -19,11 +23,11 @@ public class LandmarkLocator {
      */
     public static void main(String[] args) {
         System.out.println("Attempting!");
-        try {
-            Demo.detectLandmarks();
-        } catch (IOException ex) {
-            System.out.println("Failed :(");
-            ex.printStackTrace();
-        }
+//        try {
+//            Demo.getPlaces();
+//        } catch (IOException ex) {
+//            System.out.println("Failed :(");
+//            ex.printStackTrace();
+//        }
     }
 }
