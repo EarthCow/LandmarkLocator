@@ -1,7 +1,8 @@
 
-package com.mycompany.landmarklocator;
+package com.mycompany.landmarklocator.web;
 
 import com.google.maps.model.PlaceType;
+import com.mycompany.landmarklocator.LandmarkLocator;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;

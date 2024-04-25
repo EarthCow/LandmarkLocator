@@ -2,7 +2,7 @@
 <web-app version="6.0" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
     <servlet>
         <servlet-name>LandmarkRequestHandler</servlet-name>
-        <servlet-class>com.mycompany.landmarklocator.LandmarkRequestHandler</servlet-class>
+        <servlet-class>com.mycompany.landmarklocator.web.LandmarkRequestHandler</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LandmarkRequestHandler</servlet-name>
