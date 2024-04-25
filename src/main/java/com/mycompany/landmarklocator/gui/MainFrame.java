@@ -1,14 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.landmarklocator.gui;
 
 import com.google.maps.model.PlaceType;
+import com.google.maps.model.PlacesSearchResult;
 import com.mycompany.landmarklocator.Landmark;
+import com.mycompany.landmarklocator.LandmarkLocator;
 import java.io.IOException;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
+import java.util.List;
 
 /**
  *
@@ -273,22 +271,30 @@ public class MainFrame extends javax.swing.JFrame {
     private void query(String filePath){
         outputTxtArea.setText("");
         outputTxtArea1.setText("");
-        String formattedplaces = "";
-        String formattedlandmarks = "";
         try {
-            Landmark.getPlaces(filePath, placetosearch);
+            List<Landmark> landmarks = LandmarkLocator.getLandmarks(filePath, placetosearch);
             
-            for(int i = 0; i < Landmark.getDescription().size(); i++) {
-                formattedlandmarks += "Landmark: " + Landmark.getDescription().get(i) + "\nLocation: \n" + Landmark.getLocation().get(i) + "\n";
+            // General info
+            String formattedLandmarks = "";
+            if (landmarks.size() > 0) {
+                for (Landmark landmark : landmarks) {
+                    formattedLandmarks += landmark.getAnnotation().getDescription() + "\n";
+                }
             }
             
-            outputTxtArea.setText(formattedlandmarks);
-
-            for(int i = 0; i < Landmark.getPlaces().size(); i++) {
-                formattedplaces += "Name: " + Landmark.getPlaces().get(i) + "\nRating: " + Landmark.getRatings().get(i) + "\n";
+            outputTxtArea.setText(formattedLandmarks);
+            
+            // Places
+            String formattedPlaces = "";
+            if (landmarks.size() > 0) {
+                for (Landmark landmark : landmarks) {
+                    for (PlacesSearchResult result : landmark.getPlacesResponse().results) {
+                        formattedPlaces += result.name + "\n";
+                    }
+                }
             }
-
-            outputTxtArea1.setText(formattedplaces);
+            
+            outputTxtArea1.setText(formattedPlaces);
 
         } catch (IOException ex) {
             System.out.println("Failed :(" + "\n"+ ex.toString());

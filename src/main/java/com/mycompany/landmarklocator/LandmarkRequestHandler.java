@@ -42,7 +42,7 @@ public class LandmarkRequestHandler extends HttpServlet {
                 return;
             }
             
-            Demo landmark = new Demo();
+            LandmarkLocator landmark = new LandmarkLocator();
 
             // set Order object in request object
             request.setAttribute("landmark", landmark);
