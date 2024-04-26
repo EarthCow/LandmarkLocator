@@ -213,7 +213,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     //moai clicked
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        query("src/main/resources/Images/realmoi.jpg");
+        query("src/main/resources/Images/realmoai.jpg");
     }//GEN-LAST:event_jLabel9MouseClicked
 
     //eiffel tower clicked
@@ -263,9 +263,9 @@ public class MainFrame extends javax.swing.JFrame {
             placesResultsTextArea.setText(formattedPlaces);
 
         } catch (IOException ex) {
-            landmarkResultsTextArea.setText("Failed :(" + "\n");
-            placesResultsTextArea.setText("Failed :(" + "\n");
-            System.out.println("Failed :(" + "\n"+ ex.toString());
+            landmarkResultsTextArea.setText("Failed :(\n");
+            placesResultsTextArea.setText("Failed :(\n");
+            System.out.println("Failed :(\n"+ ex.toString());
             ex.printStackTrace();
         }
     }
