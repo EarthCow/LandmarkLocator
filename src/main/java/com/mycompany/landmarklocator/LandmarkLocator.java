@@ -20,6 +20,8 @@ import com.google.protobuf.ByteString;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -31,6 +33,25 @@ import java.util.List;
  * 
  */
 public class LandmarkLocator {
+    
+    public static List<String> predefinedPlaces = Collections.unmodifiableList(Arrays.asList(
+            "Restaurant",
+            "Cafe",
+            "Amusement Park",
+            "Aquarium",
+            "Bowling Alley",
+            "Casino",
+            "University",
+            "Hiking Area",
+            "Historical Landmark",
+            "Museum",
+            "Movie Theater",
+            "National Park",
+            "Night Club",
+            "Park",
+            "Tourist Attraction",
+            "Zoo"
+    ));
     
     public static List<Landmark> getLandmarks(String filePath, PlaceType placeType) throws IOException{
         List<Landmark> landmarks = new ArrayList();
@@ -51,27 +72,26 @@ public class LandmarkLocator {
             for (AnnotateImageResponse res : responses) {
                 if (res.hasError()) {
                     System.out.format("Error: %s%n", res.getError().getMessage());
-                    return null;
-                }
+                } else {
+                    for (EntityAnnotation annotation : res.getLandmarkAnnotationsList()) {
+                        LocationInfo info = annotation.getLocationsList().listIterator().next();
 
-                for (EntityAnnotation annotation : res.getLandmarkAnnotationsList()) {
-                    LocationInfo info = annotation.getLocationsList().listIterator().next();
+                        System.out.format("Landmark: %s%n %s%n", annotation.getDescription(), info.getLatLng());
 
-                    System.out.format("Landmark: %s%n %s%n", annotation.getDescription(), info.getLatLng());
+                        // Begin the places search
+                        GeoApiContext context = new GeoApiContext.Builder()
+                            .apiKey("AIzaSyC26kOz1q-7JdipmEP8b--dcnYGomYr63E")
+                            .build();
+                        LatLng mapsLatLng = new LatLng(info.getLatLng().getLatitude(), info.getLatLng().getLongitude());
+                        NearbySearchRequest nsr = PlacesApi.nearbySearchQuery(context, mapsLatLng);
 
-                    // Begin the places search
-                    GeoApiContext context = new GeoApiContext.Builder()
-                        .apiKey("AIzaSyC26kOz1q-7JdipmEP8b--dcnYGomYr63E")
-                        .build();
-                    LatLng mapsLatLng = new LatLng(info.getLatLng().getLatitude(), info.getLatLng().getLongitude());
-                    NearbySearchRequest nsr = PlacesApi.nearbySearchQuery(context, mapsLatLng);
-
-                    try {
-                        PlacesSearchResponse psr = nsr.radius(500).type(placeType).await();
-                        System.out.println("Found a total of " + psr.results.length + " results!");
-                        landmarks.add(new Landmark(annotation, info, psr));
-                    } catch (ApiException | IOException | InterruptedException ex) {
-                        ex.printStackTrace();
+                        try {
+                            PlacesSearchResponse psr = nsr.radius(500).type(placeType).await();
+                            System.out.println("Found a total of " + psr.results.length + " results!");
+                            landmarks.add(new Landmark(annotation, info, psr));
+                        } catch (ApiException | IOException | InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
                     }
                 }
             }

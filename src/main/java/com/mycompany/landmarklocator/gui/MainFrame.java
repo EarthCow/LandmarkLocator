@@ -13,14 +13,16 @@ import java.util.List;
  * @author Griffin G & Ryan W.
  */
 public class MainFrame extends javax.swing.JFrame {
-
-    private String placeStr;
-    private PlaceType placetosearch;
+    
     /**
      * Creates new form NewJFrame
      */
     public MainFrame() {
         initComponents();
+        // Add the place types to the combo box
+        for (String predefinedPlace : LandmarkLocator.predefinedPlaces) {
+            placesComboBox.addItem(predefinedPlace);
+        }
     }
 
     /**
@@ -35,15 +37,14 @@ public class MainFrame extends javax.swing.JFrame {
         jSpinner1 = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        outputTxtArea = new javax.swing.JTextArea();
-        jComboBox = new javax.swing.JComboBox<>();
+        landmarkResultsTextArea = new javax.swing.JTextArea();
+        placesComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        outputTxtArea1 = new javax.swing.JTextArea();
+        placesResultsTextArea = new javax.swing.JTextArea();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -53,27 +54,26 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Heart Rate Calculator");
+        setTitle("Landmark Locator");
         setLocation(new java.awt.Point(100, 100));
 
-        outputTxtArea.setEditable(false);
-        outputTxtArea.setColumns(20);
-        outputTxtArea.setRows(5);
-        outputTxtArea.setFocusable(false);
-        outputTxtArea.setName("outputTxtArea"); // NOI18N
-        jScrollPane1.setViewportView(outputTxtArea);
+        landmarkResultsTextArea.setEditable(false);
+        landmarkResultsTextArea.setColumns(20);
+        landmarkResultsTextArea.setRows(5);
+        landmarkResultsTextArea.setFocusable(false);
+        landmarkResultsTextArea.setName("landmarkResultsTextArea"); // NOI18N
+        jScrollPane1.setViewportView(landmarkResultsTextArea);
 
-        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "restaurant", "cafe", "amusement_park", "aquarium", "bowling_alley", "casino", "cultural_center", "university", "hiking_area", "historical_landmark", "museum", "movie_theater", "national_park", "night_club", "park", "tourist_attraction", "zoo" }));
-        jComboBox.setName("placevalues"); // NOI18N
+        placesComboBox.setName("placevalues"); // NOI18N
 
         jLabel3.setText("Search for:");
 
-        outputTxtArea1.setEditable(false);
-        outputTxtArea1.setColumns(20);
-        outputTxtArea1.setRows(5);
-        outputTxtArea1.setFocusable(false);
-        outputTxtArea1.setName("outputTxtArea"); // NOI18N
-        jScrollPane2.setViewportView(outputTxtArea1);
+        placesResultsTextArea.setEditable(false);
+        placesResultsTextArea.setColumns(20);
+        placesResultsTextArea.setRows(5);
+        placesResultsTextArea.setFocusable(false);
+        placesResultsTextArea.setName("outputTxtArea"); // NOI18N
+        jScrollPane2.setViewportView(placesResultsTextArea);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Landmark Locator");
@@ -81,13 +81,6 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel7.setText("Information:");
 
         jLabel8.setText("Results of Search:");
-
-        jButton1.setText("Select");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cathedral.jpg"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -131,40 +124,33 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(219, 219, 219)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(24, 24, 24)
-                                        .addComponent(jLabel1))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jLabel10)))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jScrollPane2)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(jLabel10)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(311, 311, 311)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(231, 231, 231)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(placesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -174,10 +160,9 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jButton1))
-                .addGap(12, 12, 12)
+                    .addComponent(placesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(13, 13, 13)
                 .addComponent(jLabel7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -205,44 +190,12 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        getAccessibleContext().setAccessibleName("Landmark Locator");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     
-    //Selecting what kind of place to search for when clicking the button
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        placeStr = jComboBox.getItemAt(jComboBox.getSelectedIndex());
-        
-        if (placeStr.equals("restaurant")){
-            placetosearch = PlaceType.RESTAURANT;
-        }else if(placeStr.equals("cafe")){
-            placetosearch = PlaceType.CAFE;
-        }else if(placeStr.equals("amusement_park")){
-            placetosearch = PlaceType.AMUSEMENT_PARK;
-        }else if(placeStr.equals("aquarium")){
-            placetosearch = PlaceType.AQUARIUM;
-        }else if(placeStr.equals("bowling_alley")){
-            placetosearch = PlaceType.BOWLING_ALLEY;
-        }else if(placeStr.equals("casino")){
-            placetosearch = PlaceType.CASINO;
-        }else if(placeStr.equals("university")){
-            placetosearch = PlaceType.UNIVERSITY;
-        }else if(placeStr.equals("museum")){
-            placetosearch = PlaceType.MUSEUM;
-        }else if(placeStr.equals("movie_theater")){
-            placetosearch = PlaceType.MOVIE_THEATER;
-        }else if(placeStr.equals("park")){
-            placetosearch = PlaceType.PARK;
-        }else if(placeStr.equals("night_club")){
-            placetosearch = PlaceType.NIGHT_CLUB;
-        }else if(placeStr.equals("tourist_attraction")){
-            placetosearch = PlaceType.TOURIST_ATTRACTION;
-        }else if(placeStr.equals("visitor_center")){
-            placetosearch = PlaceType.ZOO;
-        }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     //old main clicked
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         query("src/main/resources/Images/college_building.jpg");
@@ -260,7 +213,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     //moai clicked
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        query("images/moai.jpg");
+        query("src/main/resources/Images/realmoi.jpg");
     }//GEN-LAST:event_jLabel9MouseClicked
 
     //eiffel tower clicked
@@ -269,34 +222,49 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void query(String filePath){
-        outputTxtArea.setText("");
-        outputTxtArea1.setText("");
+        // Get the place type from the places dropdown
+        String placeTypeStr = ((String) placesComboBox.getSelectedItem());
+        PlaceType selectedPlaceType = PlaceType.valueOf(placeTypeStr.replace(" ", "_").toUpperCase());
+        
+        // TODO: Fix these loading messages (they don't always show up for some reason)
+        landmarkResultsTextArea.setText("Locating...");
+        placesResultsTextArea.setText("Finding places nearby...");
         try {
-            List<Landmark> landmarks = LandmarkLocator.getLandmarks(filePath, placetosearch);
+            // Blocks the thread until the search is complete
+            List<Landmark> landmarks = LandmarkLocator.getLandmarks(filePath, selectedPlaceType);
             
             // General info
             String formattedLandmarks = "";
             if (landmarks.size() > 0) {
                 for (Landmark landmark : landmarks) {
-                    formattedLandmarks += landmark.getAnnotation().getDescription() + "\n";
+                    formattedLandmarks += landmark.getAnnotation().getDescription()
+                            + "\n  Latitude: " + landmark.getLocationInfo().getLatLng().getLatitude()
+                            + "\n  Longitude: " + landmark.getLocationInfo().getLatLng().getLongitude()+ "\n";
                 }
+            } else {
+                formattedLandmarks = "No landmarks were discovered!";
             }
             
-            outputTxtArea.setText(formattedLandmarks);
+            landmarkResultsTextArea.setText(formattedLandmarks);
             
             // Places
             String formattedPlaces = "";
-            if (landmarks.size() > 0) {
-                for (Landmark landmark : landmarks) {
+            for (Landmark landmark : landmarks) {
+                formattedPlaces += placeTypeStr + "s near the " + landmark.getAnnotation().getDescription() + "\n";
+                if (landmark.getPlacesResponse().results.length > 0) {
                     for (PlacesSearchResult result : landmark.getPlacesResponse().results) {
-                        formattedPlaces += result.name + "\n";
+                        formattedPlaces += "  " + result.name + "\n";
                     }
+                } else {
+                    formattedPlaces += "  None\n";
                 }
             }
             
-            outputTxtArea1.setText(formattedPlaces);
+            placesResultsTextArea.setText(formattedPlaces);
 
         } catch (IOException ex) {
+            landmarkResultsTextArea.setText("Failed :(" + "\n");
+            placesResultsTextArea.setText("Failed :(" + "\n");
             System.out.println("Failed :(" + "\n"+ ex.toString());
             ex.printStackTrace();
         }
@@ -346,8 +314,6 @@ public class MainFrame extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -361,7 +327,8 @@ public class MainFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextArea outputTxtArea;
-    private javax.swing.JTextArea outputTxtArea1;
+    private javax.swing.JTextArea landmarkResultsTextArea;
+    private javax.swing.JComboBox<String> placesComboBox;
+    private javax.swing.JTextArea placesResultsTextArea;
     // End of variables declaration//GEN-END:variables
 }
