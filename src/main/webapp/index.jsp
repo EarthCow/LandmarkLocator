@@ -42,24 +42,11 @@
 
 <form action="LandmarkRequestHandler" method="get">
     <select name="place" required>
-        <option value="RESTAURANT" selected>Restaurant</option>
-        <option value="CAFE">Cafe</option>
-        <option value="AMUSEMENT_PARK">Amusement Park</option>
-        <option value="AQUARIUM">Aquarium</option>
-        <option value="BOWLING_ALLEY">Bowling Alley</option>
-        <option value="CASINO">Casino</option>
-        <option value="CULTURAL_CENTER">Cultural Center</option>
-        <option value="DOG_PARK">Dog Park</option>
-        <option value="HIKING_AREA">Hiking Area</option>
-        <option value="HISTORICAL_LANDMARK">Historical Landmark</option>
-        <option value="MARINA">Marina</option>
-        <option value="MOVIE_THEATER">Movie Theater</option>
-        <option value="NATIONAL_PARK">National Park</option>
-        <option value="NIGHT_CLUB">Night Club</option>
-        <option value="PARK">Park</option>
-        <option value="TOURIST_ATTRACTION">Tourist Attraction</option>
-        <option value="VISITOR_CENTER">Visitor Center</option>
-        <option value="ZOO">Zoo</option>
+        <%
+            for (String place : com.mycompany.landmarklocator.LandmarkLocator.predefinedPlaces) {
+        %>
+        <option value="<%= place.toUpperCase().replace(" ", "_") %>"><%= place %></option>
+        <% } %>
     </select>
     <br/>
     <br/>
@@ -76,7 +63,7 @@
                         // Display the image as a radio button
         %>
         <label>
-            <input type="radio" name="image" value="<%= directory + "/" + file.getName() %>" required>
+            <input type="radio" name="image" value="<%= file.getName() %>" required>
             <img src="<%= directory + "/" + file.getName() %>" alt="<%= file.getName() %>">
         </label>
         <% 

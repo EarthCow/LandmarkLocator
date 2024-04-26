@@ -2,6 +2,7 @@
 package com.mycompany.landmarklocator.web;
 
 import com.google.maps.model.PlaceType;
+import com.mycompany.landmarklocator.Landmark;
 import com.mycompany.landmarklocator.LandmarkLocator;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,6 +10,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import org.slf4j.impl.StaticLoggerBinder;
 
 /**
  * CMPSC 221 Program LandmarkLocator
@@ -31,7 +34,7 @@ public class LandmarkRequestHandler extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try (PrintWriter out = response.getWriter()) {
-            String imagePath = request.getParameter("image");
+            String imagePath = request.getSession().getServletContext().getRealPath("images") + "/" + request.getParameter("image");
             String place = request.getParameter("place");
             
             PlaceType placeType;
@@ -39,14 +42,19 @@ public class LandmarkRequestHandler extends HttpServlet {
                 placeType = PlaceType.valueOf(place);
             } catch (IllegalArgumentException ex) {
                 // If the provided PlaceType is invalid send them back.
-                response.sendRedirect("./index.html?invalid");
+                response.sendRedirect("./index.jsp?invalid");
                 return;
             }
             
-            LandmarkLocator landmark = new LandmarkLocator();
+            try {
+                List<Landmark> landmarks = LandmarkLocator.getLandmarks(imagePath, placeType);
 
-            // set Order object in request object
-            request.setAttribute("landmark", landmark);
+                System.out.println("Sucess!!");
+                // Set attribute in request object
+                request.setAttribute("landmarks", landmarks);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
 
             // Forward request and response objects
             getServletContext()
