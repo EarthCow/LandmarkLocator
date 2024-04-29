@@ -65,9 +65,7 @@ public class LandmarkDB {
                          CREATE TABLE Landmarks (
                             "Landmark ID" int generated always as identity(start with 0, increment by 1),
                             "Name" varchar(255),
-                            "Lat" varchar(255),
-                            "Lng" varchar(255),
-                            "Image" varchar(255),
+                            "FilePath" varchar(255),
                             primary key ("Landmark ID")
                          )""");
             
@@ -92,31 +90,31 @@ public class LandmarkDB {
      * @param image The path to the image of the landmark
      * @throws SQLException 
      */
-    public void createRecord(String name, double lat, double lng, String image) throws SQLException {
+    public void createRecord(String name, String filePath) throws SQLException {
         
         Connection con = DriverManager.getConnection(url, user, password);     
         Statement stmt = con.createStatement();
         
         String query = String.format("""
-                       INSERT INTO Landmarks
+                       INSERT INTO APP.LANDMARKS
                        (
                          "Name",
-                         "Lat",
-                         "Lng",
-                         "Image"
+                         "FilePath"
                        ) VALUES (
-                         '%s',
-                         '%s',
                          '%s',
                          '%s'
                        )
-                       """, name, lat, lng, image);
+                       """, name, filePath);
+        
+        
         
         stmt.execute(query);
         stmt.close();
         con.close();
         
     }
+    
+    
     
     /**
      * Pulls a record from the DB
@@ -148,11 +146,10 @@ public class LandmarkDB {
         
         int id = resultSet.getInt("Landmark ID");
         String realName = resultSet.getString("Name");
-        double lat = Double.parseDouble(resultSet.getString("Lat"));
-        double lng = Double.parseDouble(resultSet.getString("Lng"));
-        String image = resultSet.getString("Image");
+        String realfilePath = resultSet.getString("FilePath");
         
-        LandmarkRecord landmarkRecord = new LandmarkRecord(id, realName, lat, lng, image);
+        
+        LandmarkRecord landmarkRecord = new LandmarkRecord(id, realName, realfilePath);
         
         stmt.close();
         con.close();

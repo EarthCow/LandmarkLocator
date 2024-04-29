@@ -13,16 +13,15 @@ public class LandmarkRecord {
     // immutable values and therefore can be public
     public final int id;
     public final String name;
-    public final double lat;
-    public final double lng;
-    public final String image;
+    public final String filePath;
     
-    public LandmarkRecord(int id, String name, double lat, double lng, String image) {
+    public LandmarkRecord(int id, String name, String filePath) {
         this.id = id;
         this.name = name;
-        this.lat = lat;
-        this.lng = lng;
-        this.image = image;
+        this.filePath = filePath;
     }
+
+    
+    
     
 }

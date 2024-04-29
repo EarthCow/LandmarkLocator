@@ -5,6 +5,7 @@ import com.google.maps.model.PlaceType;
 import com.google.maps.model.PlacesSearchResult;
 import com.mycompany.landmarklocator.Landmark;
 import com.mycompany.landmarklocator.LandmarkLocator;
+import com.mycompany.landmarklocator.*;
 import java.io.IOException;
 import java.util.List;
 
@@ -198,29 +199,53 @@ public class MainFrame extends javax.swing.JFrame {
     
     //old main clicked
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        query("src/main/resources/Images/college_building.jpg");
+        try{
+            query(Main.landmarkDB.getRecord("old main").filePath);
+        }catch(Exception e){
+            landmarkResultsTextArea.setText(e.toString());
+        }
     }//GEN-LAST:event_jLabel1MouseClicked
 
     //opera clicked
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        query("src/main/resources/Images/opera.jpg");
+        try{
+            query(Main.landmarkDB.getRecord("opera house").filePath);
+        }catch(Exception e){
+            landmarkResultsTextArea.setText(e.toString());
+        }
     }//GEN-LAST:event_jLabel2MouseClicked
 
     //red square clicked
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        query("src/main/resources/Images/cathedral.jpg");
+        try{
+            query(Main.landmarkDB.getRecord("cathedral").filePath);
+        }catch(Exception e){
+            landmarkResultsTextArea.setText(e.toString());
+        }
     }//GEN-LAST:event_jLabel4MouseClicked
 
     //moai clicked
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        query("src/main/resources/Images/realmoai.jpg");
+        try{
+            query(Main.landmarkDB.getRecord("moai heads").filePath);
+        }catch(Exception e){
+            landmarkResultsTextArea.setText(e.toString());
+        }
     }//GEN-LAST:event_jLabel9MouseClicked
 
     //eiffel tower clicked
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        query("src/main/resources/Images/realtower.jpg");
+        try{
+            query(Main.landmarkDB.getRecord("tall tower").filePath);
+        }catch(Exception e){
+            landmarkResultsTextArea.setText(e.toString());
+        }
     }//GEN-LAST:event_jLabel10MouseClicked
 
+    /**
+     * This method edits and sets the text fields for the landmarks and places results.
+     * @param filePath is the file path to the image the landmark is to be searched
+     */
     private void query(String filePath){
         // Get the place type from the places dropdown
         String placeTypeStr = ((String) placesComboBox.getSelectedItem());
@@ -253,7 +278,7 @@ public class MainFrame extends javax.swing.JFrame {
                 formattedPlaces += placeTypeStr + "s near the " + landmark.getAnnotation().getDescription() + "\n";
                 if (landmark.getPlacesResponse().results.length > 0) {
                     for (PlacesSearchResult result : landmark.getPlacesResponse().results) {
-                        formattedPlaces += "  " + result.name + "\n";
+                        formattedPlaces += "  * " + result.name + "\n";
                     }
                 } else {
                     formattedPlaces += "  None\n";
