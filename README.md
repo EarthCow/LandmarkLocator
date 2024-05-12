@@ -1,5 +1,5 @@
 # Landmark Locator
-
+*Note: All API keys & tokens are no longer valid in this repository and were only ever present through pre-beta testing.*
 ## Overview
 Landmark Locator is a Java-based computer vision project that utilizes Google Cloud Vision to identify landmarks in images. Once a landmark is identified, it leverages the Google Maps API to find places of interest near that landmark.
 
